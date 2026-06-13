@@ -1,0 +1,11 @@
+# OS / editor cruft
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+
+# temp verification / candidate assets (not part of the deliverable)
+_verify.html
+**/_cand/
+*_verify.png
+*_crop*.png

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIROCCO — The Wind That Carries the Desert | Niche Men's Extrait de Parfum</title>
+<meta name="description" content="SIROCCO is a single signature extrait de parfum for men — saffron, oud and black amber. One scent, made exceptionally. Try at home risk-free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ reusable SVG flacon ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="bottle" viewBox="0 0 200 320">
+    <defs>
+      <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#e8a85b"/>
+        <stop offset=".42" stop-color="#c8772e"/>
+        <stop offset=".7" stop-color="#7a3d18"/>
+        <stop offset="1" stop-color="#3a2410"/>
+      </linearGradient>
+      <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e7cd9a"/>
+        <stop offset=".5" stop-color="#b08d57"/>
+        <stop offset="1" stop-color="#6f5532"/>
+      </linearGradient>
+      <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+        <stop offset=".25" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- cap -->
+    <rect x="78" y="6" width="44" height="40" rx="4" fill="url(#cap)"/>
+    <rect x="84" y="44" width="32" height="14" fill="#6f5532"/>
+    <!-- shoulders + body -->
+    <path d="M62 58 h76 a10 10 0 0 1 10 10 v224 a14 14 0 0 1 -14 14 H66 a14 14 0 0 1 -14 -14 V68 a10 10 0 0 1 10 -10 Z" fill="url(#glass)"/>
+    <!-- glass shine -->
+    <path d="M70 70 h12 v224 h-12 Z" fill="url(#shine)" opacity=".7"/>
+    <!-- label -->
+    <rect x="70" y="150" width="60" height="96" rx="2" fill="#0E0B08" opacity=".82"/>
+    <rect x="70" y="150" width="60" height="96" rx="2" fill="none" stroke="#b08d57" stroke-width="1" opacity=".7"/>
+    <text x="100" y="186" text-anchor="middle" fill="#E0A85B" font-family="Cormorant Garamond, serif" font-size="15" letter-spacing="2.5">SIROCCO</text>
+    <text x="100" y="204" text-anchor="middle" fill="#B7AC98" font-family="Inter, sans-serif" font-size="5.5" letter-spacing="2">EXTRAIT DE PARFUM</text>
+    <line x1="84" y1="214" x2="116" y2="214" stroke="#b08d57" stroke-width=".7" opacity=".6"/>
+    <text x="100" y="230" text-anchor="middle" fill="#B7AC98" font-family="Inter, sans-serif" font-size="5" letter-spacing="1.5">50 ML · 24%</text>
+  </symbol>
+  <symbol id="verify" viewBox="0 0 48 48">
+    <polygon fill="#E0A85B" points="29.62,3 33.053,8.308 39.367,8.624 39.686,14.937 44.997,18.367 42.116,23.995 45,29.62 39.692,33.053 39.376,39.367 33.063,39.686 29.633,44.997 24.005,42.116 18.38,45 14.947,39.692 8.633,39.376 8.314,33.063 3.003,29.633 5.884,24.005 3,18.38 8.308,14.947 8.624,8.633 14.937,8.314 18.367,3.003 23.995,5.884"/>
+    <polygon fill="#1a1206" points="21.396,31.255 14.899,24.76 17.021,22.639 21.428,27.046 30.996,17.772 33.084,19.926"/>
+  </symbol>
+</svg>
+
+<!-- ============ announcement ============ -->
+<div class="announce">Complimentary 2-day shipping over $95 &nbsp;·&nbsp; <b>Try at home — pay only if you keep it</b> &nbsp;·&nbsp; 30-night guarantee</div>
+
+<!-- ============ nav ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <nav class="nav-links">
+      <a href="#story">The Story</a>
+      <a href="#notes">The Notes</a>
+      <a href="#maker">The Maker</a>
+    </nav>
+    <div class="brandmark">SIROCCO</div>
+    <div class="nav-right">
+      <a href="#buy">Reviews</a>
+      <button class="nav-cart" id="navCart">Bag <span class="cart-dot" id="cartCount">0</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ hero ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">Niche Extrait · Made in Grasse</span>
+      <h1>SIROCCO<span class="noir">eau extrait noir</span></h1>
+      <p class="hero-tag">The wind that carries the desert.</p>
+      <p class="hero-desc">One scent. Saffron and black pepper at the gate, oud and incense in the smoke, amber and leather on the skin. We make a single fragrance — and we make it without compromise.</p>
+      <div class="hero-cta">
+        <a href="#buy" class="btn btn-primary">Discover the Scent</a>
+        <a href="#story" class="btn btn-ghost">Read the Story</a>
+      </div>
+      <div class="scent-tags">
+        <span>Smoky</span><span>Spiced</span><span>Ambery</span><span>Warm</span>
+      </div>
+      <div class="hero-meta">
+        <div><b>24%</b>Extrait concentration</div>
+        <div><b>14h+</b>On-skin longevity</div>
+        <div><b>4.8★</b>1,240+ reviews</div>
+      </div>
+    </div>
+    <div class="bottle-stage reveal">
+      <div class="glow"></div>
+      <svg class="bottle"><use href="#bottle"/></svg>
+      <div class="plinth"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ trust strip ============ -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-rating"><span class="stars">★★★★★</span> 4.8 / 5 · 1,240 verified reviews</div>
+    <div class="press">
+      <span>GQ</span><span>Esquire</span><span>Hypebeast</span><span>Monocle</span><span>GENTLEMAN'S&nbsp;J.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ story (editorial) ============ -->
+<section class="section story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-img reveal">
+      <img src="assets/story-dusk.jpg" alt="A dusk wind crossing the dunes at the edge of the desert" loading="lazy">
+      <p class="mono">“It begins as heat,<br>and ends as skin.”</p>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Liner Notes</span>
+      <h2 class="section-title" style="margin:14px 0 26px">A dusk wind,<br>bottled.</h2>
+      <p class="drop">The sirocco is the hot wind that lifts off the Sahara at nightfall and crosses the sea before dawn. It carries sand, dried spice, and the smoke of the souk — warm, restless, impossible to ignore. We spent three years chasing that exact moment: the instant the day's heat turns golden and the air goes heavy with resin.</p>
+      <p>Our perfumer built SIROCCO around a rare Assam oud and a saffron tincture aged for nine months, then grounded it in Levantine amber and a soft, worn leather. It opens loud and bright, settles into incense and smoke, and dries down to something that smells like warm skin in cold weather — the reason people lean in.</p>
+      <p class="sig">Idris Marén<small>Master Perfumer · Grasse, France</small></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ notes ============ -->
+<section class="section notes" id="notes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Olfactive Arc</span>
+      <h2 class="section-title" style="margin-top:14px">How it moves across the hour.</h2>
+      <p class="lead">SIROCCO unfolds in three acts — the arrival, the smoke, the embers. Hover each to read its story.</p>
+    </div>
+    <div class="notes-tl">
+      <article class="note-card reveal">
+        <span class="note-num">01</span>
+        <span class="note-phase">The Arrival · 0–15 min</span>
+        <p class="note-stage">Heat at the gate</p>
+        <ul class="note-list">
+          <li>Saffron</li><li>Black Pepper</li><li>Bergamot</li><li>Cardamom</li>
+        </ul>
+      </article>
+      <article class="note-card reveal">
+        <span class="note-num">02</span>
+        <span class="note-phase">The Smoke · 1–4 hrs</span>
+        <p class="note-stage">A heart of resin</p>
+        <ul class="note-list">
+          <li>Assam Oud</li><li>Cedarwood</li><li>Olibanum Incense</li><li>Rose Absolute</li>
+        </ul>
+      </article>
+      <article class="note-card reveal">
+        <span class="note-num">03</span>
+        <span class="note-phase">The Embers · 4 hrs+</span>
+        <p class="note-stage">Skin and leather</p>
+        <ul class="note-list">
+          <li>Levantine Amber</li><li>Worn Leather</li><li>Vetiver</li><li>Tonka &amp; Musk</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- scent profile -->
+    <div class="profile">
+      <div class="profile-bars reveal">
+        <div class="bar-row"><span>Smoky</span><div class="bar-track"><i class="bar-fill" data-w="88%"></i></div><span>8.8</span></div>
+        <div class="bar-row"><span>Spiced</span><div class="bar-track"><i class="bar-fill" data-w="82%"></i></div><span>8.2</span></div>
+        <div class="bar-row"><span>Ambery</span><div class="bar-track"><i class="bar-fill" data-w="90%"></i></div><span>9.0</span></div>
+        <div class="bar-row"><span>Fresh</span><div class="bar-track"><i class="bar-fill" data-w="34%"></i></div><span>3.4</span></div>
+        <div class="bar-row"><span>Sweet</span><div class="bar-track"><i class="bar-fill" data-w="46%"></i></div><span>4.6</span></div>
+      </div>
+      <p class="profile-note reveal">A cool-weather, after-dark signature. Worn close, it reads intimate; sprayed twice, it fills a room. Built for the man who wants <em style="color:var(--gold);font-style:italic">one</em> scent that becomes his.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ buy block (PDP) ============ -->
+<section class="section buy" id="buy">
+  <div class="wrap buy-grid">
+    <div class="buy-visual reveal">
+      <svg class="bottle"><use href="#bottle"/></svg>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">The Signature</span>
+      <h2>SIROCCO Extrait de Parfum</h2>
+      <div class="rating-inline"><span class="stars">★★★★★</span> 4.8 · <a href="#reviews" style="border-bottom:1px solid var(--line)">1,240 reviews</a></div>
+      <div class="price" id="priceTag">$145 <small>/ 50ml · 24% extrait</small></div>
+      <p class="buy-desc">Saffron, oud and black amber. A single, uncompromising signature — concentrated to extrait strength so a little lasts the whole night.</p>
+
+      <div class="sizes" id="sizes">
+        <div class="size-opt active" data-price="145" data-label="50ml — Full Size"><b>50 ml</b><span>Full size</span><em>$145</em></div>
+        <div class="size-opt" data-price="24" data-label="8ml — Discovery"><b>8 ml</b><span>Discovery</span><em>$24</em></div>
+        <div class="size-opt" data-price="6" data-label="2ml — Try at Home"><b>2 ml</b><span>Try at home</span><em>$6</em></div>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="addToCart">Add to Bag — <span id="btnPrice">$145</span></button>
+
+      <ul class="assurances">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E0A85B" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> <strong style="color:var(--sand)">Try at home:</strong>&nbsp;sample for $6 — full credit back when you buy full size.</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E0A85B" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 30-night guarantee — return it even if it's open.</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E0A85B" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Free 2-day shipping over $95 · ships today before 3pm.</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E0A85B" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Clean, IFRA-compliant · vegan · never tested on animals.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ reviews ============ -->
+<section class="section reviews" id="reviews">
+  <div class="wrap">
+    <div class="rev-top reveal">
+      <div class="rev-score">
+        <div class="big">4.8</div>
+        <div>
+          <div class="stars" style="font-size:18px">★★★★★</div>
+          <div style="font-size:13px;color:var(--sand-dim);margin-top:4px">Based on 1,240 verified reviews</div>
+        </div>
+      </div>
+      <div style="font-size:13px;color:var(--sand-dim);max-width:300px">94% of wearers say they were stopped and asked what they were wearing.</div>
+    </div>
+    <div class="rev-marquee reveal">
+      <div class="rev-row" style="--dur:54s">
+        <article class="rev-card">
+          <div class="rev-head"><span class="av">M</span><div class="rev-id"><span class="rev-name">Marcus T. <svg class="verify-ic" width="14" height="14"><use href="#verify"/></svg></span><span class="verified">Verified buyer</span></div><span class="stars">★★★★★</span></div>
+          <p>“Three people asked what I was wearing on the first night. Smoky but warm — never harsh. This is my signature now.”</p>
+        </article>
+        <article class="rev-card">
+          <div class="rev-head"><span class="av">D</span><div class="rev-id"><span class="rev-name">Daniel R. <svg class="verify-ic" width="14" height="14"><use href="#verify"/></svg></span><span class="verified">Verified buyer</span></div><span class="stars">★★★★★</span></div>
+          <p>“Tried the $6 sample first, wore it once, and ordered the bottle the next morning. The drydown on skin is unreal.”</p>
+        </article>
+        <article class="rev-card">
+          <div class="rev-head"><span class="av">S</span><div class="rev-id"><span class="rev-name">Sofia L. <svg class="verify-ic" width="14" height="14"><use href="#verify"/></svg></span><span class="verified">Verified buyer</span></div><span class="stars">★★★★★</span></div>
+          <p>“Bought it for my husband and now I steal it. That saffron opening is intoxicating — utterly addictive.”</p>
+        </article>
+        <article class="rev-card">
+          <div class="rev-head"><span class="av">A</span><div class="rev-id"><span class="rev-name">Adam K. <svg class="verify-ic" width="14" height="14"><use href="#verify"/></svg></span><span class="verified">Verified buyer</span></div><span class="stars">★★★★☆</span></div>
+          <p>“Genuinely lasts all day — still on my jacket the next morning. Wanted a touch more freshness up top, hence 4 stars.”</p>
+        </article>
+      </div>
+      <div class="rev-row reverse" style="--dur:60s">
+        <article class="rev-card">
+          <div class="rev-head"><span class="av">J</span><div class="rev-id"><span class="rev-name">James O. <svg class="verify-ic" width="14" height="14"><use href="#verify"/></svg></span><span class="verified">Verified buyer</span></div><span class="stars">★★★★★</span></div>
+          <p>“I've worn a lot of niche oud scents. This is the first that smells like skin, not a department store counter.”</p>
+        </article>
+        <article class="rev-card">
+          <div class="rev-head"><span class="av">P</span><div class="rev-id"><span class="rev-name">Priya N. <svg class="verify-ic" width="14" height="14"><use href="#verify"/></svg></span><span class="verified">Verified buyer</span></div><span class="stars">★★★★★</span></div>
+          <p>“A compliment magnet in cold weather. Two sprays and it fills the room without ever screaming for attention.”</p>
+        </article>
+        <article class="rev-card">
+          <div class="rev-head"><span class="av">L</span><div class="rev-id"><span class="rev-name">Lucas M. <svg class="verify-ic" width="14" height="14"><use href="#verify"/></svg></span><span class="verified">Verified buyer</span></div><span class="stars">★★★★★</span></div>
+          <p>“The 24% concentration is no joke. A little goes a long way — this bottle is going to last me the whole year.”</p>
+        </article>
+        <article class="rev-card">
+          <div class="rev-head"><span class="av">H</span><div class="rev-id"><span class="rev-name">Hannah B. <svg class="verify-ic" width="14" height="14"><use href="#verify"/></svg></span><span class="verified">Verified buyer</span></div><span class="stars">★★★★★</span></div>
+          <p>“The scent, the bottle, the whole story — it feels like a $300 fragrance. Easily my favourite buy this year.”</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ maker / craft ============ -->
+<section class="section maker" id="maker">
+  <div class="wrap maker-grid">
+    <div class="reveal">
+      <span class="eyebrow">The Craft</span>
+      <h2 class="section-title" style="margin:14px 0 22px">No catalogue.<br>One obsession.</h2>
+      <p style="color:var(--sand-dim);font-weight:300;font-size:1.05rem">Most houses launch a dozen scents a year. We've spent three on one. Every batch is poured in small lots in Grasse, aged eight weeks before it ships, and signed by the perfumer who made it.</p>
+      <div class="craft">
+        <div><b>3 yrs</b><span>In development</span></div>
+        <div><b>27</b><span>Natural ingredients</span></div>
+        <div><b>8 wks</b><span>Maceration before bottling</span></div>
+        <div><b>1</b><span>Signature scent, perfected</span></div>
+      </div>
+    </div>
+    <div class="story-img reveal" style="aspect-ratio:1">
+      <img src="assets/maker-ingredients.jpg" alt="Natural raw materials — saffron threads, resins and spice — measured by hand" loading="lazy">
+      <p class="mono">Grasse,<br>France</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ discovery upsell ============ -->
+<section class="section discover">
+  <div class="wrap">
+    <div class="disc-card reveal">
+      <div>
+        <span class="eyebrow">Not sure yet?</span>
+        <h3 style="margin-top:12px">Try it at home for $6.</h3>
+        <p>Order the 2ml travel atomizer, live with it for a week, and decide on your own skin. Keep it? We credit the full $6 toward your bottle. It's the honest way to buy fragrance.</p>
+        <button class="btn btn-primary" id="addSample">Add the $6 Sample</button>
+      </div>
+      <div class="buy-visual" style="aspect-ratio:1;min-height:220px"><svg class="bottle" style="width:90px"><use href="#bottle"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ faq ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Before You Ask</span>
+      <h2 class="section-title" style="margin-top:14px">Questions, answered.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><button class="faq-q">How long does SIROCCO last? <span class="ico">+</span></button><div class="faq-a"><p>As a 24% extrait, expect 12–16 hours on skin and several days on clothing. Two sprays is plenty — this is a concentration, not an eau de toilette.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Is it too strong for the office? <span class="ico">+</span></button><div class="faq-a"><p>Worn close (one spray to the chest) it stays intimate and skin-like. It's a cool-weather, after-dark scent by design, but a single spray works through the day.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What if I don't like it? <span class="ico">+</span></button><div class="faq-a"><p>Return it within 30 nights for a full refund — even if the bottle is opened. We'd rather you wear something you love.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Is this a men's fragrance? <span class="ico">+</span></button><div class="faq-a"><p>It's built around classically masculine accords — oud, leather, amber, spice — but scent has no gender. Plenty of our wearers share a bottle.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ email capture ============ -->
+<section class="section capture">
+  <div class="wrap">
+    <span class="eyebrow reveal">Join the House</span>
+    <h2 class="reveal">Get 10% off your first bottle.</h2>
+    <p class="lead reveal">One email a month — new batches, the stories behind the notes, and early access. No noise.</p>
+    <form class="cap-form reveal" id="capForm">
+      <input type="email" placeholder="your@email.com" required>
+      <button class="btn btn-primary" type="submit">Unlock 10%</button>
+    </form>
+    <p class="cap-note reveal">No spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- ============ footer ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brandmark">SIROCCO</div>
+        <p>A single signature extrait, made in Grasse. The wind that carries the desert — bottled for the hours after dark.</p>
+      </div>
+      <div class="foot-col"><h4>Shop</h4><a href="#buy">Full Size — 50ml</a><a href="#buy">Discovery — 8ml</a><a href="#buy">Try at Home — 2ml</a><a href="#buy">Gift Set</a></div>
+      <div class="foot-col"><h4>The House</h4><a href="#story">Our Story</a><a href="#maker">The Maker</a><a href="#notes">The Notes</a><a href="#reviews">Reviews</a></div>
+      <div class="foot-col"><h4>Help</h4><a href="#">Shipping &amp; Returns</a><a href="#">Longevity Guide</a><a href="#">Contact</a><a href="#">FAQ</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SIROCCO Parfums · Grasse, France</span>
+      <span>Concept &amp; design — portfolio demonstration</span>
+    </div>
+  </div>
+</footer>
+
+<!-- sticky mobile buy bar -->
+<div class="sticky-buy" id="stickyBuy">
+  <div class="sb-info"><b>SIROCCO Extrait</b><span id="sbLabel">50ml · $145</span></div>
+  <button class="btn btn-primary" id="stickyAdd">Add to Bag</button>
+</div>
+
+<!-- toast -->
+<div class="toast" id="toast">Added to your bag</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "title": "Men's / Hero-Product Fragrance Website Design Audit",
+    "date": "2026-06-13",
+    "methodology": "Expert visual + UX review grounded in real full-page screenshots (captured via thum.io) and product-page content analysis (via web fetch). Perceived speed only — no Lighthouse runs. Each criterion scored 1–10, then weighted to a /100 score.",
+    "criteria": [
+      { "key": "hero", "label": "Hero & Visual Design", "weight": 0.20 },
+      { "key": "ux", "label": "UX/UI & Navigation", "weight": 0.15 },
+      { "key": "branding", "label": "Branding (color/type/identity)", "weight": 0.15 },
+      { "key": "copy", "label": "Copywriting & Scent Storytelling", "weight": 0.15 },
+      { "key": "notes", "label": "Notes Presentation (Top/Mid/Base)", "weight": 0.10 },
+      { "key": "social", "label": "Social Proof & Reviews", "weight": 0.10 },
+      { "key": "speed", "label": "Speed / Performance (perceived)", "weight": 0.10 },
+      { "key": "conversion", "label": "Conversion / CTA / PDP flow", "weight": 0.05 }
+    ]
+  },
+  "sites": [
+    {
+      "name": "Snif",
+      "url": "https://snif.co",
+      "platform": "Shopify",
+      "category": "DTC / hero-scents",
+      "screenshot": "screenshots/snif.png",
+      "scores": { "hero": 8, "ux": 9, "branding": 8, "copy": 9, "notes": 9, "social": 7, "speed": 8, "conversion": 9 },
+      "total": 83.5,
+      "rank": 1,
+      "notes": "Witty, gender-inclusive voice. Notes shown 3 ways (inline list, Top/Mid/Base pyramid, expandable ingredient cards) plus a 'scent stack' visual. 7-day try-at-home, subscribe & save, bundles. Accessible price ($68/30ml) lowers risk. Best conversion architecture in the set."
+    },
+    {
+      "name": "Commodity",
+      "url": "https://commodityfragrances.com",
+      "platform": "Shopify",
+      "category": "DTC / clean luxury",
+      "screenshot": "screenshots/commodity.png",
+      "scores": { "hero": 9, "ux": 8, "branding": 8, "copy": 7, "notes": 9, "social": 9, "speed": 8, "conversion": 8 },
+      "total": 82.5,
+      "rank": 2,
+      "notes": "Dramatic B&W macro-floral photography + bold serif product names. Innovative temporal notes ('First / Then / Finally') with descriptor tags (Sweet|Woody|Vanilla) and intensity variants (Personal/Expressive/Bold) on a Scent Space chart. 4.9★ / 932 reviews shown prominently. Discovery kits credit toward full size."
+    },
+    {
+      "name": "D.S. & Durga",
+      "url": "https://www.dsanddurga.com",
+      "platform": "Shopify",
+      "category": "Niche / editorial",
+      "screenshot": "screenshots/dsdurga.png",
+      "scores": { "hero": 9, "ux": 8, "branding": 9, "copy": 10, "notes": 8, "social": 4, "speed": 7, "conversion": 7 },
+      "total": 81.0,
+      "rank": 3,
+      "notes": "Magazine-grade editorial: oversized type, category-labeled grid, fragrance-finder QUIZ. Best-in-class literary copy — 'Liner Notes' designer essays + Spotify playlists position scent as art object. Classic Top/Heart/Base pyramid. No reviews (authority via narrative) — its one weakness. Premium price ($225/50ml)."
+    },
+    {
+      "name": "Phlur",
+      "url": "https://phlur.com",
+      "platform": "Shopify",
+      "category": "DTC / viral",
+      "screenshot": "screenshots/phlur.png",
+      "scores": { "hero": 7, "ux": 8, "branding": 8, "copy": 8, "notes": 7, "social": 8, "speed": 7, "conversion": 8 },
+      "total": 76.0,
+      "rank": 4,
+      "notes": "Emotional, memory-led copy (the 'Missing Person' phenomenon). Strong social proof and TikTok-driven demand. Aggressive email-capture popup on entry."
+    },
+    {
+      "name": "Vilhelm Parfumerie",
+      "url": "https://vilhelmparfumerie.com",
+      "platform": "Shopify",
+      "category": "Niche / luxury",
+      "screenshot": "screenshots/vilhelm.png",
+      "scores": { "hero": 9, "ux": 8, "branding": 9, "copy": 7, "notes": 7, "social": 5, "speed": 6, "conversion": 6 },
+      "total": 75.0,
+      "rank": 5,
+      "notes": "Cinematic dark-luxury art direction — oversized gold serif ('DEAR LORD') over moody macro. Beautiful but heavy; thinner social proof and conversion scaffolding."
+    },
+    {
+      "name": "Heretic Parfum",
+      "url": "https://hereticparfum.com",
+      "platform": "Shopify",
+      "category": "Niche / natural-edgy",
+      "screenshot": "screenshots/heretic.png",
+      "scores": { "hero": 8, "ux": 7, "branding": 8, "copy": 8, "notes": 7, "social": 6, "speed": 7, "conversion": 7 },
+      "total": 74.0,
+      "rank": 6,
+      "notes": "Dark, provocative, masculine-leaning art direction (armored hand + amber bottle). Distinct edgy voice. Entry popup 'Step 1: Unlock 10% off'."
+    },
+    {
+      "name": "Boy Smells",
+      "url": "https://boysmells.com",
+      "platform": "Shopify",
+      "category": "DTC / genderful",
+      "screenshot": "screenshots/boysmells.png",
+      "scores": { "hero": 8, "ux": 8, "branding": 8, "copy": 7, "notes": 7, "social": 6, "speed": 7, "conversion": 7 },
+      "total": 74.0,
+      "rank": 7,
+      "notes": "Bold, colorful 'genderful' identity with confident type system and clean grid."
+    },
+    {
+      "name": "Dossier",
+      "url": "https://dossier.co",
+      "platform": "Shopify",
+      "category": "DTC / value / dupes",
+      "screenshot": "screenshots/dossier.png",
+      "scores": { "hero": 7, "ux": 8, "branding": 7, "copy": 6, "notes": 7, "social": 8, "speed": 8, "conversion": 8 },
+      "total": 72.5,
+      "rank": 8,
+      "notes": "Value positioning ('inspired-by' designer scents) with strong review volume and frictionless conversion. Branding intentionally clean/neutral, so lower emotional pull."
+    },
+    {
+      "name": "Byredo",
+      "url": "https://byredo.com",
+      "platform": "Custom (Salesforce)",
+      "category": "Luxury benchmark",
+      "screenshot": "screenshots/byredo.png",
+      "scores": { "hero": 9, "ux": 7, "branding": 9, "copy": 6, "notes": 6, "social": 4, "speed": 6, "conversion": 6 },
+      "total": 70.0,
+      "rank": 9,
+      "notes": "Iconic minimalist wordmark + restraint = pure luxury signal. Included as a non-Shopify design benchmark. Sparse copy, no reviews, cookie-wall friction, heavy assets."
+    },
+    {
+      "name": "Goldfield & Banks",
+      "url": "https://www.goldfieldandbanks.com",
+      "platform": "Shopify",
+      "category": "Niche / luxury",
+      "screenshot": "screenshots/goldfieldbanks.png",
+      "scores": { "hero": 7, "ux": 7, "branding": 7, "copy": 7, "notes": 7, "social": 5, "speed": 7, "conversion": 6 },
+      "total": 67.5,
+      "rank": 10,
+      "notes": "Polished Australian-luxe niche site; solid but less differentiated hero and thinner social proof."
+    }
+  ],
+  "weak_archetypes": [
+    {
+      "name": "The Discount Reseller",
+      "examples": "perfume.com / fragrancex.com style",
+      "problems": [
+        "Cluttered mega-menu + dense product grid; no visual hierarchy",
+        "No scent storytelling — SKUs treated as commodities",
+        "Banner/sale overload competes with itself; trust eroded",
+        "Notes (if any) buried in a spec table, not a pyramid",
+        "Design feels dated; price is the only differentiator"
+      ]
+    },
+    {
+      "name": "The Default-Theme Dropshipper",
+      "examples": "generic unmodified Shopify theme",
+      "problems": [
+        "Stock photography, no original art direction or identity",
+        "Fake urgency timers and 'X people viewing' widgets erode trust",
+        "Thin/auto-generated copy; no origin or maker story",
+        "No sampling, no reviews that read as real, weak returns policy",
+        "Generic type + default colors = forgettable brand"
+      ]
+    },
+    {
+      "name": "The Over-Designed but Broken",
+      "examples": "heavy 'agency' build, style over substance",
+      "problems": [
+        "Slow LCP from huge unoptimized video/imagery",
+        "Mystery-meat navigation; unclear what to click",
+        "Animations block reading and the CTA on scroll",
+        "Hero looks great but buries price, notes and 'add to cart'",
+        "Poor mobile rendering; layout shifts hurt confidence"
+      ]
+    }
+  ],
+  "top3": ["Snif", "Commodity", "D.S. & Durga"]
+}

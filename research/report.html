@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fragrance Web Design Audit → SIROCCO | Research Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0b09;--bg2:#15110c;--card:#191309;--ink:#1d1610;
+  --sand:#E9DECB;--dim:#A89C86;--amber:#C8772E;--gold:#E0A85B;--brass:#B08D57;
+  --green:#6fae6b;--red:#cf6b5a;--line:rgba(233,222,203,.14);--line-soft:rgba(233,222,203,.07);
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--sand);line-height:1.62;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--gold);text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:.01em}
+.eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.dim{color:var(--dim)}
+.mono{font-family:var(--sans);font-variant-numeric:tabular-nums}
+
+/* progress bar */
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold));z-index:999;width:0}
+
+/* sticky nav */
+.topnav{position:sticky;top:0;z-index:200;background:rgba(13,11,9,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+.topnav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.topnav .logo{font-family:var(--serif);letter-spacing:.16em;font-size:1.15rem}
+.topnav nav{display:flex;gap:24px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.topnav nav a{color:var(--dim)}
+.topnav nav a:hover{color:var(--gold)}
+@media(max-width:820px){.topnav nav{display:none}}
+
+/* hero */
+.r-hero{padding:90px 0 70px;background:
+  radial-gradient(80% 60% at 80% 10%,rgba(200,119,46,.16),transparent 60%),
+  linear-gradient(180deg,#17110b,#0d0b09)}
+.r-hero h1{font-size:clamp(2.6rem,7vw,5.2rem);margin:18px 0 20px;max-width:14ch}
+.r-hero h1 em{font-style:italic;color:var(--gold)}
+.r-hero p.sub{font-size:clamp(1.05rem,2vw,1.35rem);color:var(--dim);font-weight:300;max-width:60ch}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;margin-top:40px;padding-top:28px;border-top:1px solid var(--line-soft)}
+.hero-stats b{font-family:var(--serif);font-size:2.4rem;color:var(--gold);display:block;line-height:1}
+.hero-stats span{font-size:12px;letter-spacing:.04em;color:var(--dim)}
+
+/* section frame */
+section{padding:74px 0;border-top:1px solid var(--line-soft)}
+.sec-head{max-width:70ch;margin-bottom:40px}
+.sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);margin:12px 0 14px}
+.sec-head p{color:var(--dim);font-weight:300;font-size:1.05rem}
+
+/* criteria weights */
+.crit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.crit{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px}
+.crit .w{font-family:var(--serif);font-size:1.9rem;color:var(--gold)}
+.crit .l{font-size:12.5px;color:var(--dim);margin-top:4px;letter-spacing:.02em}
+.crit .tk{height:4px;background:var(--line-soft);border-radius:4px;margin-top:12px;overflow:hidden}
+.crit .tk i{display:block;height:100%;background:linear-gradient(90deg,var(--amber),var(--gold))}
+@media(max-width:820px){.crit-grid{grid-template-columns:1fr 1fr}}
+
+/* ranking table */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px}
+th,td{padding:13px 14px;text-align:left;border-bottom:1px solid var(--line-soft)}
+th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);cursor:pointer;user-select:none;white-space:nowrap;background:var(--bg2)}
+th:hover{color:var(--gold)}
+th .ar{opacity:.4;font-size:9px}
+tbody tr{transition:background .2s}
+tbody tr:hover{background:rgba(200,119,46,.05)}
+tbody tr.top td{background:rgba(224,168,91,.06)}
+td.rank{font-family:var(--serif);font-size:1.3rem;color:var(--gold);width:46px}
+td.name b{font-size:14px}
+td.name span{display:block;font-size:11px;color:var(--dim)}
+.pill{font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:30px;border:1px solid var(--line);color:var(--dim)}
+.scorecell{font-family:var(--serif);font-size:1.25rem;color:var(--sand)}
+.scorebar{height:5px;width:64px;background:var(--line-soft);border-radius:5px;overflow:hidden;margin-top:5px}
+.scorebar i{display:block;height:100%;background:linear-gradient(90deg,var(--amber),var(--gold))}
+.badge-top{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#1a1206;background:var(--gold);padding:2px 7px;border-radius:20px;font-weight:700;margin-left:6px}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.shot{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:transform .35s,border-color .35s}
+.shot:hover{transform:translateY(-5px);border-color:rgba(224,168,91,.5)}
+.shot .imgbox{height:230px;overflow:hidden;position:relative;background:#000}
+.shot .imgbox img{width:100%;object-fit:cover;object-position:top;transition:object-position 3.5s ease}
+.shot:hover .imgbox img{object-position:bottom}
+.shot .imgbox .sc{position:absolute;top:10px;right:10px;background:rgba(13,11,9,.85);border:1px solid var(--gold);color:var(--gold);
+  font-family:var(--serif);font-size:1.05rem;padding:3px 11px;border-radius:30px;backdrop-filter:blur(4px)}
+.shot .meta{padding:15px 16px}
+.shot .meta h4{font-size:1.15rem}
+.shot .meta .row{display:flex;justify-content:space-between;align-items:center;margin-top:4px}
+.shot .meta .cat{font-size:11px;color:var(--dim);letter-spacing:.04em}
+.shot .meta p{font-size:12.5px;color:var(--dim);margin-top:10px;line-height:1.5}
+@media(max-width:900px){.gal{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.gal{grid-template-columns:1fr}.crit-grid{grid-template-columns:1fr}}
+
+/* top3 podium */
+.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:10px}
+.pod{background:radial-gradient(120% 80% at 50% 0,rgba(200,119,46,.14),transparent 60%),var(--card);
+  border:1px solid var(--line);border-radius:12px;padding:26px;text-align:center}
+.pod .medal{font-family:var(--serif);font-size:2.6rem;color:var(--gold)}
+.pod h3{font-size:1.7rem;margin:6px 0}
+.pod .big{font-family:var(--serif);font-size:2.8rem;color:var(--sand);margin:8px 0}
+.pod .tag{font-size:11px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:820px){.podium{grid-template-columns:1fr}}
+
+/* deep-dive tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tab{border:1px solid var(--line);border-radius:30px;padding:9px 20px;font-size:12.5px;letter-spacing:.06em;color:var(--dim);cursor:pointer;transition:.25s}
+.tab.active{border-color:var(--gold);color:var(--gold);background:rgba(224,168,91,.06)}
+.qa{display:none}
+.qa.show{display:block;animation:fade .4s}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
+.qa-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.qa-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px}
+.qa-card h4{font-size:1.25rem;color:var(--gold);margin-bottom:8px}
+.qa-card p{font-size:13.5px;color:var(--dim)}
+.qa-card b{color:var(--sand);font-weight:600}
+@media(max-width:760px){.qa-grid{grid-template-columns:1fr}}
+
+/* patterns list */
+.pat{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pat .item{display:flex;gap:14px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:9px;padding:18px}
+.pat .num{font-family:var(--serif);font-size:1.6rem;color:var(--amber);flex:none;line-height:1}
+.pat .item p{font-size:13.5px}
+.pat .item b{color:var(--sand)}
+@media(max-width:760px){.pat{grid-template-columns:1fr}}
+
+/* do / dont */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.dd-col{border:1px solid var(--line);border-radius:11px;padding:24px}
+.dd-col.bad{background:rgba(207,107,90,.05);border-color:rgba(207,107,90,.3)}
+.dd-col.good{background:rgba(111,174,107,.05);border-color:rgba(111,174,107,.3)}
+.dd-col h3{font-size:1.4rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.dd-col.bad h3{color:var(--red)}.dd-col.good h3{color:var(--green)}
+.dd-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.dd-col li{display:flex;gap:10px;font-size:13.5px;color:var(--dim)}
+.dd-col li::before{font-weight:700;flex:none}
+.dd-col.bad li::before{content:"✕";color:var(--red)}
+.dd-col.good li::before{content:"✓";color:var(--green)}
+.arch{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.arch .a{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:18px}
+.arch .a h4{color:var(--red);font-size:1.15rem}
+.arch .a .ex{font-size:11px;color:var(--dim);letter-spacing:.04em;margin:3px 0 10px}
+.arch .a li{font-size:12.5px;color:var(--dim);margin-bottom:6px;list-style:none;padding-left:14px;position:relative}
+.arch .a li::before{content:"–";position:absolute;left:0;color:var(--red)}
+@media(max-width:820px){.dd,.arch{grid-template-columns:1fr}}
+
+/* principles */
+.princ{counter-reset:p;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.princ .pr{background:linear-gradient(180deg,var(--card),var(--ink));border:1px solid var(--line);border-radius:10px;padding:22px 22px 22px 64px;position:relative}
+.princ .pr::before{counter-increment:p;content:counter(p,decimal-leading-zero);position:absolute;left:20px;top:20px;
+  font-family:var(--serif);font-size:1.5rem;color:var(--amber)}
+.princ .pr h4{font-size:1.2rem;margin-bottom:6px}
+.princ .pr p{font-size:13px;color:var(--dim)}
+@media(max-width:760px){.princ{grid-template-columns:1fr}}
+
+/* sirocco showcase */
+.show{background:radial-gradient(90% 70% at 70% 10%,rgba(200,119,46,.16),transparent 55%),linear-gradient(180deg,#16100a,#0d0b09)}
+.show-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.show-frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;max-height:560px;overflow-y:auto;background:#000}
+.show-frame::-webkit-scrollbar{width:8px}.show-frame::-webkit-scrollbar-thumb{background:var(--brass);border-radius:8px}
+.map{margin-top:18px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.map .mrow{display:grid;grid-template-columns:1fr 1.2fr;gap:0;font-size:13px;border-bottom:1px solid var(--line-soft)}
+.map .mrow:last-child{border-bottom:none}
+.map .mrow>div{padding:13px 16px}
+.map .mrow .k{color:var(--gold);border-right:1px solid var(--line-soft);font-weight:500}
+.map .mrow .v{color:var(--dim)}
+.cta-row{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:3px;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;transition:.3s}
+.btn-p{background:var(--amber);color:#1a1206}.btn-p:hover{background:var(--gold)}
+.btn-g{border:1px solid var(--line);color:var(--sand)}.btn-g:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:820px){.show-grid{grid-template-columns:1fr}}
+
+/* concept spec */
+.spec{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.spec .s{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:18px}
+.spec .s h4{color:var(--gold);font-size:1rem;letter-spacing:.04em;margin-bottom:10px;font-family:var(--sans);text-transform:uppercase;font-size:11px;letter-spacing:.16em}
+.spec .s p{font-size:13px;color:var(--dim)}
+.swatches{display:flex;gap:8px;margin-top:8px}
+.swatches i{width:26px;height:26px;border-radius:5px;border:1px solid var(--line)}
+@media(max-width:760px){.spec{grid-template-columns:1fr}}
+
+footer.rfoot{padding:50px 0;border-top:1px solid var(--line-soft);text-align:center;color:var(--dim);font-size:13px}
+.note-src{font-size:11.5px;color:var(--dim);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+
+<div class="topnav">
+  <div class="wrap">
+    <span class="logo">Fragrance Design Audit</span>
+    <nav>
+      <a href="#method">Method</a>
+      <a href="#ranking">Ranking</a>
+      <a href="#top3">Top 3</a>
+      <a href="#deep">Deep Dive</a>
+      <a href="#weak">Pitfalls</a>
+      <a href="#principles">Principles</a>
+      <a href="#sirocco">SIROCCO</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ===== hero ===== -->
+<header class="r-hero">
+  <div class="wrap">
+    <span class="eyebrow">Competitive Design Teardown · June 2026</span>
+    <h1>What makes a men's <em>perfume</em> website actually win.</h1>
+    <p class="sub">I audited 10 of the strongest fragrance sites (DTC/Shopify + niche), scored each across 8 weighted design criteria, deep-dived the top 3, dissected why weak sites fail — then turned the patterns into a real, buildable product: <b style="color:var(--sand)">SIROCCO</b>.</p>
+    <div class="hero-stats">
+      <div><b>10</b><span>sites audited</span></div>
+      <div><b>8</b><span>weighted criteria</span></div>
+      <div><b>3</b><span>deep-dive winners</span></div>
+      <div><b>10</b><span>design principles</span></div>
+      <div><b>1</b><span>site built from them</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== method ===== -->
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">01 · The Scoring System</span>
+      <h2>A weighted rubric, not a vibe check.</h2>
+      <p>Each site is scored 1–10 on eight criteria, weighted by impact on how a fragrance site converts a stranger into a buyer, then rolled into a single /100 score. Visual + UX review grounded in real full-page screenshots and product-page content analysis. Speed is judged on perceived load only (no lab tools), so it carries modest weight.</p>
+    </div>
+    <div class="crit-grid" id="critGrid"></div>
+  </div>
+</section>
+
+<!-- ===== ranking ===== -->
+<section id="ranking">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">02 · The Leaderboard</span>
+      <h2>All 10, ranked.</h2>
+      <p>Click any column header to re-sort. The three highlighted rows advance to the deep dive.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table id="rankTable">
+        <thead>
+          <tr>
+            <th data-k="rank">#</th>
+            <th data-k="name">Brand</th>
+            <th data-k="platform">Platform</th>
+            <th data-k="hero">Hero</th>
+            <th data-k="copy">Copy</th>
+            <th data-k="notes">Notes</th>
+            <th data-k="social">Proof</th>
+            <th data-k="conversion">Convert</th>
+            <th data-k="total">Score ▾</th>
+          </tr>
+        </thead>
+        <tbody id="rankBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== gallery ===== -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">03 · The Shortlist</span>
+      <h2>The contenders, in the flesh.</h2>
+      <p>Real captures of each homepage. Hover to pan down the page. Score shown top-right.</p>
+    </div>
+    <div class="gal" id="gal"></div>
+    <p class="note-src">Screenshots captured June 2026 via thum.io. Two are above-the-fold only where the site resisted full-page rendering. Future Society was unreachable at capture time and replaced by Goldfield &amp; Banks.</p>
+  </div>
+</section>
+
+<!-- ===== top 3 ===== -->
+<section id="top3">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">04 · The Winners</span>
+      <h2>Three sites that get it right — for three different reasons.</h2>
+      <p>Deliberately diverse: an accessible conversion machine, a clean-luxury house with elite social proof, and an editorial storytelling benchmark. Together they cover the full playbook.</p>
+    </div>
+    <div class="podium" id="podium"></div>
+  </div>
+</section>
+
+<!-- ===== deep dive ===== -->
+<section id="deep">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">05 · Deep Dive</span>
+      <h2>How the winners operate.</h2>
+      <p>Six questions, answered across Snif, Commodity and D.S. &amp; Durga.</p>
+    </div>
+    <div class="tabs" id="ddTabs"></div>
+    <div id="ddBody"></div>
+  </div>
+</section>
+
+<!-- ===== shared patterns ===== -->
+<section id="patterns">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">06 · The Common DNA</span>
+      <h2>What all three share.</h2>
+      <p>The repeatable patterns underneath the surface differences.</p>
+    </div>
+    <div class="pat" id="patGrid"></div>
+  </div>
+</section>
+
+<!-- ===== weak ===== -->
+<section id="weak">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">07 · Why Sites Fail</span>
+      <h2>The pitfalls the winners avoid.</h2>
+      <p>The two discount giants we tried to capture (perfume.com, fragrancex.com) were both behind bot-walls — fitting, since their cluttered, dated design is exactly the anti-pattern. Below: three archetypes of weak fragrance sites, and the do/don't they teach.</p>
+    </div>
+    <div class="dd">
+      <div class="dd-col bad">
+        <h3>✕ What kills a perfume site</h3>
+        <ul>
+          <li>Treating bottles as SKUs in a dense grid — no story, no world</li>
+          <li>Stock photography and a default theme — zero brand identity</li>
+          <li>Notes hidden in a spec table instead of an olfactive arc</li>
+          <li>Fake urgency timers &amp; "12 people viewing" — trust poison</li>
+          <li>Hero that looks nice but buries price, notes and add-to-cart</li>
+          <li>No sampling, no real reviews, no guarantee — all risk on the buyer</li>
+        </ul>
+      </div>
+      <div class="dd-col good">
+        <h3>✓ What the winners do instead</h3>
+        <ul>
+          <li>Sell a world first — origin, mood, a named maker</li>
+          <li>Original art-directed macro photography, one restrained palette</li>
+          <li>Notes as a structured pyramid / temporal arc + descriptor tags</li>
+          <li>Concrete proof: star average + count + verified testimonials</li>
+          <li>Cinematic hero with ONE clear CTA and visible price/CTA on PDP</li>
+          <li>De-risk: try-at-home with credit, 30-day guarantee, free-ship</li>
+        </ul>
+      </div>
+    </div>
+    <div class="arch" id="archGrid"></div>
+  </div>
+</section>
+
+<!-- ===== principles ===== -->
+<section id="principles">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">08 · The Playbook</span>
+      <h2>10 principles for a winning fragrance site.</h2>
+      <p>The bridge between research and build — every one of these is applied in SIROCCO.</p>
+    </div>
+    <div class="princ" id="princGrid"></div>
+  </div>
+</section>
+
+<!-- ===== sirocco ===== -->
+<section id="sirocco" class="show">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">09 · The Build</span>
+      <h2>SIROCCO — the playbook, made real.</h2>
+      <p>A fictional single-product men's house built to demonstrate every principle above. "The wind that carries the desert" — a saffron / oud / black-amber extrait, sold as one uncompromising signature.</p>
+    </div>
+    <div class="show-grid">
+      <div class="show-frame">
+        <img src="screenshots/sirocco_verify.png" alt="SIROCCO full site screenshot">
+      </div>
+      <div>
+        <h3 style="font-size:1.9rem;margin-bottom:6px">Principle → execution</h3>
+        <div class="map" id="mapTable"></div>
+        <div class="cta-row">
+          <a class="btn btn-p" href="../site/index.html" target="_blank">Open the live site ↗</a>
+          <a class="btn btn-g" href="data/scoring.json" target="_blank">View raw scores</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec">
+      <div class="s">
+        <h4>The Concept</h4>
+        <p><b style="color:var(--sand);font-family:var(--serif);font-size:1.3rem">SIROCCO</b><br>Single-product niche men's extrait. Tagline: <i>"The wind that carries the desert."</i> One scent, made exceptionally — premium but accessible at $145 / 50ml.</p>
+      </div>
+      <div class="s">
+        <h4>The Notes</h4>
+        <p><b>Arrival:</b> saffron, black pepper, bergamot, cardamom.<br><b>Smoke:</b> oud, cedar, incense, rose.<br><b>Embers:</b> amber, leather, vetiver, tonka, musk.</p>
+      </div>
+      <div class="s">
+        <h4>Identity</h4>
+        <p>Display serif (Cormorant) + clean grotesque (Inter). Desert-dusk-into-noir palette:</p>
+        <div class="swatches">
+          <i style="background:#0E0B08"></i><i style="background:#E8DCC8"></i><i style="background:#C8772E"></i><i style="background:#E0A85B"></i><i style="background:#5A2A22"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="rfoot">
+  <div class="wrap">
+    <p>Fragrance Web Design Audit → SIROCCO · Portfolio research &amp; build · June 2026</p>
+    <p class="note-src">Methodology: expert visual + UX review grounded in real screenshots and product-page content analysis. Scores are judgment-based and directional, not a substitute for analytics or A/B testing.</p>
+  </div>
+</footer>
+
+<script>
+/* ===== embedded data (from data/scoring.json) ===== */
+const DATA = {
+  criteria:[
+    {key:"hero",label:"Hero & Visual Design",weight:.20},
+    {key:"ux",label:"UX/UI & Navigation",weight:.15},
+    {key:"branding",label:"Branding & Identity",weight:.15},
+    {key:"copy",label:"Copywriting & Storytelling",weight:.15},
+    {key:"notes",label:"Notes Presentation",weight:.10},
+    {key:"social",label:"Social Proof & Reviews",weight:.10},
+    {key:"speed",label:"Speed (perceived)",weight:.10},
+    {key:"conversion",label:"Conversion / PDP",weight:.05}
+  ],
+  sites:[
+    {name:"Snif",url:"https://snif.co",platform:"Shopify",category:"DTC / hero-scents",shot:"snif.png",rank:1,total:83.5,s:{hero:8,ux:9,branding:8,copy:9,notes:9,social:7,speed:8,conversion:9},note:"Witty, gender-inclusive voice. Notes shown 3 ways + a 'scent stack' visual. 7-day try-at-home, subscribe & save, bundles. Accessible $68 entry. Best conversion architecture in the set."},
+    {name:"Commodity",url:"https://commodityfragrances.com",platform:"Shopify",category:"DTC / clean luxury",shot:"commodity.png",rank:2,total:82.5,s:{hero:9,ux:8,branding:8,copy:7,notes:9,social:9,speed:8,conversion:8},note:"Dramatic B&W macro-floral photography + bold serif names. Innovative 'First/Then/Finally' notes + intensity variants on a Scent Space chart. 4.9★/932 reviews shown prominently."},
+    {name:"D.S. & Durga",url:"https://www.dsanddurga.com",platform:"Shopify",category:"Niche / editorial",shot:"dsdurga.png",rank:3,total:81.0,s:{hero:9,ux:8,branding:9,copy:10,notes:8,social:4,speed:7,conversion:7},note:"Magazine-grade editorial: oversized type, fragrance-finder QUIZ. Best-in-class literary copy — 'Liner Notes' essays + Spotify playlists. No reviews is its one weakness."},
+    {name:"Phlur",url:"https://phlur.com",platform:"Shopify",category:"DTC / viral",shot:"phlur.png",rank:4,total:76.0,s:{hero:7,ux:8,branding:8,copy:8,notes:7,social:8,speed:7,conversion:8},note:"Emotional, memory-led copy ('Missing Person'). Strong social proof and TikTok-driven demand. Aggressive entry popup."},
+    {name:"Vilhelm Parfumerie",url:"https://vilhelmparfumerie.com",platform:"Shopify",category:"Niche / luxury",shot:"vilhelm.png",rank:5,total:75.0,s:{hero:9,ux:8,branding:9,copy:7,notes:7,social:5,speed:6,conversion:6},note:"Cinematic dark-luxury art direction — oversized gold serif over moody macro. Beautiful but heavy; thinner proof & conversion scaffolding."},
+    {name:"Heretic Parfum",url:"https://hereticparfum.com",platform:"Shopify",category:"Niche / natural-edgy",shot:"heretic.png",rank:6,total:74.0,s:{hero:8,ux:7,branding:8,copy:8,notes:7,social:6,speed:7,conversion:7},note:"Dark, provocative, masculine-leaning art direction. Distinct edgy voice. 'Step 1: Unlock 10% off' entry popup."},
+    {name:"Boy Smells",url:"https://boysmells.com",platform:"Shopify",category:"DTC / genderful",shot:"boysmells.png",rank:7,total:74.0,s:{hero:8,ux:8,branding:8,copy:7,notes:7,social:6,speed:7,conversion:7},note:"Bold, colorful 'genderful' identity with a confident type system and clean grid."},
+    {name:"Dossier",url:"https://dossier.co",platform:"Shopify",category:"DTC / value",shot:"dossier.png",rank:8,total:72.5,s:{hero:7,ux:8,branding:7,copy:6,notes:7,social:8,speed:8,conversion:8},note:"Value 'inspired-by' positioning with strong review volume and frictionless conversion. Intentionally neutral branding = lower emotional pull."},
+    {name:"Byredo",url:"https://byredo.com",platform:"Custom",category:"Luxury benchmark",shot:"byredo.png",rank:9,total:70.0,s:{hero:9,ux:7,branding:9,copy:6,notes:6,social:4,speed:6,conversion:6},note:"Iconic minimalist wordmark = pure luxury signal. Non-Shopify benchmark. Sparse copy, no reviews, cookie-wall friction, heavy assets."},
+    {name:"Goldfield & Banks",url:"https://www.goldfieldandbanks.com",platform:"Shopify",category:"Niche / luxury",shot:"goldfieldbanks.png",rank:10,total:67.5,s:{hero:7,ux:7,branding:7,copy:7,notes:7,social:5,speed:7,conversion:6},note:"Polished Australian-luxe niche site; solid but less differentiated hero and thinner social proof."}
+  ],
+  archetypes:[
+    {name:"The Discount Reseller",ex:"perfume.com / fragrancex.com style",probs:["Cluttered mega-menu + dense grid; no hierarchy","No storytelling — SKUs as commodities","Banner/sale overload erodes trust","Notes buried in a spec table","Dated design; price is the only hook"]},
+    {name:"The Default-Theme Dropshipper",ex:"unmodified Shopify theme",probs:["Stock photos, no art direction or identity","Fake urgency timers & 'X viewing' widgets","Thin, auto-generated copy; no maker story","No sampling, no believable reviews","Generic type + default colors = forgettable"]},
+    {name:"The Over-Designed but Broken",ex:"style over substance",probs:["Slow load from huge unoptimized media","Mystery-meat navigation","Animations block reading & the CTA","Hero buries price, notes & add-to-cart","Poor mobile rendering & layout shift"]}
+  ],
+  deepdive:[
+    {q:"What do they have in common?",a:[
+      {h:"One cinematic hero",p:"<b>All three</b> open with oversized serif type over a single dramatic image — Commodity's B&W macro florals, D.S.&Durga's editorial spreads, Snif's playful product hero. One message, one CTA."},
+      {h:"Story over spec",p:"Every product sells a <b>world</b> before the liquid — a named maker, an origin, a mood. D.S.&Durga's 'Liner Notes' essays are the purest form."},
+      {h:"Structured notes",p:"None use a flat ingredient list. Snif (pyramid + scent-stack), Commodity (First/Then/Finally), D.S.&Durga (Top/Heart/Base) all give notes an <b>architecture</b>."},
+      {h:"De-risked buying",p:"All offer <b>sampling/discovery</b> — Snif's try-at-home, Commodity's discovery kits with credit, D.S.&Durga's pocket sprays + quiz — plus first-order email capture."}
+    ]},
+    {q:"How do they build trust & luxury?",a:[
+      {h:"A named human",p:"<b>Maker credibility</b> — Commodity names perfumer Donna Ramanauskas; D.S.&Durga is the designer's voice; Grasse / small-batch / years-in-development signals recur."},
+      {h:"Restraint = premium",p:"Generous whitespace, a single restrained palette, and a high-contrast serif do the heavy lifting. Luxury is signalled by what's <b>left out</b>."},
+      {h:"Concrete proof",p:"Commodity surfaces <b>4.9★ / 932 reviews</b> high on the PDP; Snif leans on testimonials + a trial guarantee. D.S.&Durga substitutes literary authority (its one risk)."},
+      {h:"Specifics that reassure",p:"Concentration, longevity, clean/IFRA claims, and clear returns convert browsing into confidence."}
+    ]},
+    {q:"How do they order the page?",a:[
+      {h:"The winning sequence",p:"Announce bar → minimal nav → <b>cinematic hero</b> → trust strip → origin story → structured notes → PDP buy block → reviews → maker/craft → discovery upsell → FAQ → email capture → footer."},
+      {h:"Hero earns the scroll",p:"The first screen sells the feeling and one CTA; everything proving it (notes, reviews, craft) is stacked below in descending order of emotional → rational."},
+      {h:"Buy block is self-contained",p:"Price, size, sample, add-to-cart and assurances all live together so a decided buyer never has to hunt."},
+      {h:"Proof before ask",p:"Reviews and maker story appear <b>before</b> the email capture — earn belief, then ask for the address."}
+    ]},
+    {q:"How do they present notes & product detail?",a:[
+      {h:"Snif — three ways",p:"Inline list + labelled Top/Mid/Base pyramid + <b>expandable ingredient cards</b> (origin, scent profile, sourcing) + a 'scent stack' visual. Maximum clarity."},
+      {h:"Commodity — temporal",p:"<b>'First / Then / Finally'</b> instead of jargon, plus descriptor tags (Sweet|Woody|Vanilla) and Personal/Expressive/Bold intensity on a Scent Space chart."},
+      {h:"D.S. & Durga — classical",p:"Traditional <b>Top/Heart/Base</b> pyramid, elevated by a designer's conceptual essay and a paired Spotify playlist — notes as art criticism."},
+      {h:"The takeaway",p:"Give notes a <b>shape</b> (pyramid or arc), add plain-language descriptors and an intensity read, and let people explore ingredients without leaving the page."}
+    ]},
+    {q:"What messaging & tone do they use?",a:[
+      {h:"Snif — witty & human",p:"\"Like a crush you can't quit.\" <b>Casual, flirtatious, relatable</b> — lowers the intimidation of niche fragrance."},
+      {h:"Commodity — sensory luxe",p:"\"Rich enough to bathe in.\" <b>Aspirational and emotive</b>, clean and modern, never clinical."},
+      {h:"D.S. & Durga — literary",p:"\"I am interested in hypothetical scent.\" <b>Conceptual, place-driven, intellectual</b> — positions fragrance as an art object."},
+      {h:"Common thread",p:"All write to the <b>senses and the imagination</b>, never a spec sheet. Tone is the brand's biggest differentiator."}
+    ]},
+    {q:"How do they convert the visitor?",a:[
+      {h:"Lower the risk",p:"<b>Sampling is the conversion engine</b>: Snif's try-at-home (pay for what you keep), Commodity's discovery kits crediting toward full size, D.S.&Durga's pocket sprays."},
+      {h:"Multiple price doors",p:"Mini / discovery / full-size and bundles let every budget in; <b>subscribe & save</b> captures repeat demand."},
+      {h:"Guide the undecided",p:"Fragrance-finder quizzes and 'scent space' comparisons (D.S.&Durga, Commodity) move browsers toward a confident pick."},
+      {h:"Capture & reassure",p:"First-order discount for the email, free-ship thresholds, Afterpay, and clear guarantees remove the last objections."}
+    ]}
+  ],
+  patterns:[
+    "Oversized high-contrast serif for hero & product names",
+    "Original, art-directed macro photography — never stock",
+    "A named maker + origin story as the emotional spine",
+    "Notes given an architecture (pyramid or temporal arc)",
+    "Sampling / discovery program that credits toward full size",
+    "Concrete social proof (star average + count) high on the PDP",
+    "One restrained palette + two type families, lots of whitespace",
+    "Self-contained buy block: price, size, sample, CTA, assurances",
+    "Tasteful first-order email capture with a discount",
+    "Related/bundle carousel + subscribe-and-save for repeat revenue"
+  ],
+  principles:[
+    {h:"Open cinematic",p:"One dramatic hero: oversized serif name, a one-line tagline, a single CTA. Sell the feeling before the facts."},
+    {h:"Shoot it like art",p:"Original macro photography and a single restrained palette. No stock, no clutter — whitespace is the luxury signal."},
+    {h:"Sell a world",p:"An origin story and a named maker. People buy the narrative and the mood, then the liquid."},
+    {h:"Give notes a shape",p:"Pyramid or 'First/Then/Finally', plus plain-language descriptor tags and intensity bars. Make scent legible."},
+    {h:"De-risk the purchase",p:"Try-at-home / discovery sample that credits toward the bottle, and a no-questions 30-day guarantee."},
+    {h:"Make proof concrete",p:"Star average + review count + verified testimonials, placed high — before you ask for anything."},
+    {h:"Two voices, one tone",p:"A display serif and a clean grotesque, used consistently. Let typography carry the brand."},
+    {h:"Engineer the buy block",p:"Price, size, sample and add-to-cart in one place; a sticky CTA on mobile so it's never lost."},
+    {h:"Guide the undecided",p:"Scent-profile bars, comparisons or a quiz to move browsers to a confident choice."},
+    {h:"Ask once, tastefully",p:"A single first-order email offer — not a carpet-bombing of popups that erodes trust."}
+  ],
+  map:[
+    ["Open cinematic","Full-bleed hero: oversized 'SIROCCO' serif + 'the wind that carries the desert' + one CTA"],
+    ["Sell a world","'Liner Notes' origin story of the sirocco wind, signed by perfumer Idris Marén, Grasse"],
+    ["Give notes a shape","Three-act arc — Arrival / Smoke / Embers — plus animated Smoky/Spiced/Ambery profile bars"],
+    ["De-risk the purchase","$6 try-at-home sample credited back, 30-night open-bottle guarantee, free-ship over $95"],
+    ["Make proof concrete","4.8★ / 1,240 reviews in the hero, trust strip, and three verified testimonials"],
+    ["Engineer the buy block","Price + 3 sizes + assurances together; sticky add-to-bag bar on mobile"],
+    ["Ask once, tastefully","Single inline 'first bottle 10% off' capture near the footer — no entry popup"]
+  ]
+};
+
+/* ===== render criteria ===== */
+const critGrid=document.getElementById('critGrid');
+DATA.criteria.forEach(c=>{
+  const pct=Math.round(c.weight*100);
+  critGrid.insertAdjacentHTML('beforeend',
+    `<div class="crit"><div class="w">${pct}%</div><div class="l">${c.label}</div><div class="tk"><i style="width:${pct*4}%"></i></div></div>`);
+});
+
+/* ===== ranking table (sortable) ===== */
+const body=document.getElementById('rankBody');
+let sortKey='total',asc=false;
+function renderTable(){
+  const rows=[...DATA.sites].sort((a,b)=>{
+    let A=sortKey in a?a[sortKey]:a.s[sortKey], B=sortKey in b?b[sortKey]:b.s[sortKey];
+    if(typeof A==='string'){return asc?A.localeCompare(B):B.localeCompare(A);}
+    return asc?A-B:B-A;
+  });
+  body.innerHTML='';
+  rows.forEach(d=>{
+    const top=d.rank<=3;
+    body.insertAdjacentHTML('beforeend',`
+      <tr class="${top?'top':''}">
+        <td class="rank">${d.rank}</td>
+        <td class="name"><b>${d.name}${top?'<span class="badge-top">Top 3</span>':''}</b><span>${d.category}</span></td>
+        <td><span class="pill">${d.platform}</span></td>
+        <td class="mono">${d.s.hero}</td>
+        <td class="mono">${d.s.copy}</td>
+        <td class="mono">${d.s.notes}</td>
+        <td class="mono">${d.s.social}</td>
+        <td class="mono">${d.s.conversion}</td>
+        <td><span class="scorecell">${d.total}</span><div class="scorebar"><i style="width:${d.total}%"></i></div></td>
+      </tr>`);
+  });
+}
+document.querySelectorAll('#rankTable th').forEach(th=>{
+  th.addEventListener('click',()=>{const k=th.dataset.k;if(k===sortKey){asc=!asc;}else{sortKey=k;asc=(k==='name');}renderTable();});
+});
+renderTable();
+
+/* ===== gallery ===== */
+const gal=document.getElementById('gal');
+[...DATA.sites].sort((a,b)=>a.rank-b.rank).forEach(d=>{
+  gal.insertAdjacentHTML('beforeend',`
+    <div class="shot">
+      <div class="imgbox"><img src="screenshots/${d.shot}" alt="${d.name} homepage" loading="lazy"><span class="sc">${d.total}</span></div>
+      <div class="meta">
+        <div class="row"><h4>${d.name}</h4><span class="pill">#${d.rank}</span></div>
+        <div class="cat">${d.category} · ${d.platform}</div>
+        <p>${d.note}</p>
+        <a href="${d.url}" target="_blank" style="font-size:12px">Visit site ↗</a>
+      </div>
+    </div>`);
+});
+
+/* ===== podium ===== */
+const podium=document.getElementById('podium');
+const medals=['Ⅰ','Ⅱ','Ⅲ'];
+const why=['Best conversion architecture & clarity','Clean luxury + elite social proof','Editorial storytelling benchmark'];
+DATA.sites.filter(s=>s.rank<=3).sort((a,b)=>a.rank-b.rank).forEach((d,i)=>{
+  podium.insertAdjacentHTML('beforeend',`
+    <div class="pod">
+      <div class="medal">${medals[i]}</div>
+      <div class="tag">${d.platform} · ${d.category}</div>
+      <h3>${d.name}</h3>
+      <div class="big">${d.total}</div>
+      <div class="tag" style="color:var(--sand)">${why[i]}</div>
+    </div>`);
+});
+
+/* ===== deep dive tabs ===== */
+const ddTabs=document.getElementById('ddTabs'),ddBody=document.getElementById('ddBody');
+DATA.deepdive.forEach((d,i)=>{
+  ddTabs.insertAdjacentHTML('beforeend',`<div class="tab ${i===0?'active':''}" data-i="${i}">${d.q}</div>`);
+  let cards=d.a.map(x=>`<div class="qa-card"><h4>${x.h}</h4><p>${x.p}</p></div>`).join('');
+  ddBody.insertAdjacentHTML('beforeend',`<div class="qa ${i===0?'show':''}" data-i="${i}"><div class="qa-grid">${cards}</div></div>`);
+});
+ddTabs.addEventListener('click',e=>{
+  const t=e.target.closest('.tab');if(!t)return;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.qa').forEach(x=>x.classList.remove('show'));
+  t.classList.add('active');
+  document.querySelector(`.qa[data-i="${t.dataset.i}"]`).classList.add('show');
+});
+
+/* ===== patterns ===== */
+const patGrid=document.getElementById('patGrid');
+DATA.patterns.forEach((p,i)=>patGrid.insertAdjacentHTML('beforeend',
+  `<div class="item"><span class="num">${String(i+1).padStart(2,'0')}</span><p><b>${p}</b></p></div>`));
+
+/* ===== archetypes ===== */
+const archGrid=document.getElementById('archGrid');
+DATA.archetypes.forEach(a=>{
+  archGrid.insertAdjacentHTML('beforeend',
+    `<div class="a"><h4>${a.name}</h4><div class="ex">${a.ex}</div><ul>${a.probs.map(p=>`<li>${p}</li>`).join('')}</ul></div>`);
+});
+
+/* ===== principles ===== */
+const princGrid=document.getElementById('princGrid');
+DATA.principles.forEach(p=>princGrid.insertAdjacentHTML('beforeend',
+  `<div class="pr"><h4>${p.h}</h4><p>${p.p}</p></div>`));
+
+/* ===== map table ===== */
+const mapTable=document.getElementById('mapTable');
+DATA.map.forEach(m=>mapTable.insertAdjacentHTML('beforeend',
+  `<div class="mrow"><div class="k">${m[0]}</div><div class="v">${m[1]}</div></div>`));
+
+/* ===== progress bar ===== */
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('prog').style.width=pct+'%';
+},{passive:true});
+</script>
+</body>
+</html>
